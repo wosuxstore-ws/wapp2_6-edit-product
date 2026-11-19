@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Edit Product (opened by the pencil icon on a Home product tile).
+     Look: big product photo on top, the title as a large headline, then iOS-style grouped
+     white cards (Pricing / Delivery) on the light grey page, and a Save button that stays
+     at the bottom. Code: EditProductActivity. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/home_bg">
+
+    <!-- ============ Header: back / title ============ -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:id="@+id/backButton"
+            style="@style/HeaderCircleButton"
+            android:layout_gravity="start|center_vertical"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back"
+            app:tint="@color/home_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Edit Product"
+            android:textColor="@color/home_title"
+            android:textSize="17sp"
+            android:fontFamily="@font/poppins_medium" />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="24dp">
+
+            <!-- ===== Product photo. Until it loads (or if there is none) the tinted category
+                   icon on the pastel color shows, exactly like the Home tile. ===== -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/heroCard"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                app:cardBackgroundColor="@color/tile_blue_bg"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/heroIcon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_bag" />
+
+                    <ImageView
+                        android:id="@+id/heroPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="Product photo"
+                        android:scaleType="centerCrop"
+                        android:visibility="gone" />
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- "Loading…" / "Couldn't reach server. Tap to retry." -->
+            <TextView
+                android:id="@+id/loadMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="Loading…"
+                android:textColor="@color/home_nav_inactive"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/formGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- ===== Title: a large headline you can type into ===== -->
+                <EditText
+                    android:id="@+id/productTitleInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@null"
+                    android:fontFamily="@font/poppins_bold"
+                    android:hint="Product title"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLines="3"
+                    android:paddingStart="0dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="0dp"
+                    android:paddingBottom="4dp"
+                    android:textColor="@color/home_title"
+                    android:textColorHint="@color/home_nav_inactive"
+                    android:textSize="22sp" />
+
+                <!-- ===== Pricing ===== -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:letterSpacing="0.04"
+                    android:text="Pricing in Rs."
+                    android:textAllCaps="true"
+                    android:textColor="@color/home_nav_inactive"
+                    android:textSize="12sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/rowOriginal"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="Original price"
+                                android:textColor="@color/home_title"
+                                android:textSize="15sp" />
+
+                            <EditText
+                                android:id="@+id/productOriginalInput"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="12dp"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:fontFamily="@font/poppins_medium"
+                                android:gravity="center_vertical|end"
+                                android:hint="0.00"
+                                android:imeOptions="actionNext"
+                                android:importantForAutofill="no"
+                                android:inputType="numberDecimal"
+                                android:maxLength="12"
+                                android:maxLines="1"
+                                android:padding="0dp"
+                                android:textColor="@color/home_title"
+                                android:textColorHint="@color/home_nav_inactive"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <!-- thin separator, starts at the text like iOS lists -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="20dp"
+                            android:background="@color/home_nav_divider" />
+
+                        <LinearLayout
+                            android:id="@+id/rowDiscount"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="Discounted price"
+                                android:textColor="@color/home_title"
+                                android:textSize="15sp" />
+
+                            <EditText
+                                android:id="@+id/productDiscountInput"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="12dp"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:fontFamily="@font/poppins_medium"
+                                android:gravity="center_vertical|end"
+                                android:hint="None"
+                                android:imeOptions="actionNext"
+                                android:importantForAutofill="no"
+                                android:inputType="numberDecimal"
+                                android:maxLength="12"
+                                android:maxLines="1"
+                                android:padding="0dp"
+                                android:textColor="@color/home_title"
+                                android:textColorHint="@color/home_nav_inactive"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Live note under the card: what customers pay / % off / a mistake -->
+                <TextView
+                    android:id="@+id/priceFooter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/home_nav_inactive"
+                    android:textSize="12.5sp" />
+
+                <!-- ===== Delivery ===== -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:letterSpacing="0.04"
+                    android:text="Delivery"
+                    android:textAllCaps="true"
+                    android:textColor="@color/home_nav_inactive"
+                    android:textSize="12sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/rowDays"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Delivery days"
+                            android:textColor="@color/home_title"
+                            android:textSize="15sp" />
+
+                        <EditText
+                            android:id="@+id/productDaysInput"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center_vertical|end"
+                            android:hint="e.g. 3"
+                            android:imeOptions="actionDone"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:maxLength="255"
+                            android:maxLines="1"
+                            android:padding="0dp"
+                            android:textColor="@color/home_title"
+                            android:textColorHint="@color/home_nav_inactive"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ============ Save button: always visible at the bottom ============ -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="16dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_button_primary"
+            android:enabled="false"
+            android:fontFamily="@font/poppins_medium"
+            android:stateListAnimator="@null"
+            android:text="Save changes"
+            android:textAllCaps="false"
+            android:textColor="#14183C"
+            android:textSize="15sp" />
+    </FrameLayout>
+
+</LinearLayout>

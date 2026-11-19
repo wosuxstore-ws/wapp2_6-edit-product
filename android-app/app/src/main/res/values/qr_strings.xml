@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- QR scan page (bottom bar centre button) -->
+    <string name="qr_scan_hint">Point the camera at the QR sticker</string>
+    <string name="qr_cd_close">Close</string>
+    <string name="qr_cd_flip">Switch camera</string>
+    <string name="qr_cd_flash">Flashlight</string>
+    <string name="qr_err_camera_permission">Camera permission is needed to scan. Allow it in the phone\'s Settings for this app.</string>
+    <string name="qr_err_camera_start">The camera could not start.</string>
+
+    <!-- Popup form shown after a scan -->
+    <string name="qr_form_title">Scanned product</string>
+    <string name="qr_form_filled">Filled from %1$s. Check the details, then save.</string>
+    <string name="qr_f_name">Product name</string>
+    <string name="qr_f_sku">Product code (SKU)</string>
+    <string name="qr_f_number">Item no.</string>
+    <string name="qr_f_bill">Bill no.</string>
+    <string name="qr_f_buy">Buying price</string>
+    <string name="qr_f_min">Min selling price</string>
+    <string name="qr_f_max">Max selling price</string>
+    <string name="qr_f_date">Date</string>
+    <string name="qr_f_category">Category ID</string>
+    <string name="qr_f_store">Store ID</string>
+    <string name="qr_btn_cancel">Cancel</string>
+    <string name="qr_btn_save">Save</string>
+    <string name="qr_err_fields">Please fix the highlighted fields.</string>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Full-screen camera page: black bars, white status icons -->
+    <style name="Theme.WLOrders.Scan" parent="Theme.WLOrders.Home">
+        <item name="android:windowBackground">@color/qr_black</item>
+        <item name="android:statusBarColor">@color/qr_black</item>
+        <item name="android:navigationBarColor">@color/qr_black</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Small caption above a field in the scan popup -->
+    <style name="QrFieldLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">14dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:textColor">@color/home_nav_inactive</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <!-- Editable grey field (same look as the Add Store popup) -->
+    <style name="QrFieldInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@drawable/bg_input_gray</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:importantForAutofill">no</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingStart">18dp</item>
+        <item name="android:paddingEnd">18dp</item>
+        <item name="android:textColor">@color/home_title</item>
+        <item name="android:textColorHint">@color/home_nav_inactive</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!-- Fields that come from the sticker id: shown, not editable -->
+    <style name="QrFieldInput.ReadOnly">
+        <item name="android:cursorVisible">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:inputType">none</item>
+        <item name="android:textColor">@color/home_nav_inactive</item>
+    </style>
+</resources>

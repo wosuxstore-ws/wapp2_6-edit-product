@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- flashlight button: accent blue while the light is on (setActivated(true)), dark otherwise -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_activated="true" android:drawable="@drawable/bg_circle_accent" />
+    <item android:drawable="@drawable/bg_circle_dark" />
+</selector>

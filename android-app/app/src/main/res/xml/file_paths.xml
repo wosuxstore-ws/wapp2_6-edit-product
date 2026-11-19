@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Lets the phone's camera app save the picture into our private cache folder. -->
+<paths>
+    <cache-path name="person_photos" path="person_photos/" />
+    <cache-path name="bill_photos" path="bill_photos/" />
+</paths>

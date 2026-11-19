@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One row of the Reports list: bank/wallet picture (or initials), account name + bank name, amount. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp">
+
+        <!-- Initials show until (or instead of) the picture. -->
+        <FrameLayout
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_circle_white"
+            android:clipToOutline="true">
+
+            <TextView
+                android:id="@+id/accountInitials"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/home_accent"
+                android:textSize="17sp"
+                android:fontFamily="@font/poppins_bold"
+                tools:text="MB" />
+
+            <ImageView
+                android:id="@+id/accountLogo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Bank or wallet logo"
+                android:padding="9dp"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/accountName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/home_title"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_medium"
+                tools:text="Shop account" />
+
+            <TextView
+                android:id="@+id/accountBank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/home_nav_inactive"
+                android:textSize="13sp"
+                tools:text="Meezan Bank" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/accountAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/home_title"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppins_medium"
+            tools:text="Rs. 15,000.50" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/row_divider" />
+</LinearLayout>

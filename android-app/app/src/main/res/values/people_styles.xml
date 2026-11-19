@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Small grey caption above a field on the Add People screen -->
+    <style name="PersonFormLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">18dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:textColor">@color/home_nav_inactive</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <!-- White rounded field (same look as the Orders search box) -->
+    <style name="PersonFormInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:background">@drawable/bg_search</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:textColor">@color/home_title</item>
+        <item name="android:textColorHint">@color/home_nav_inactive</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+</resources>

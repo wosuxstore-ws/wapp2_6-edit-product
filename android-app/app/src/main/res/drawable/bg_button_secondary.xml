@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- White pill with a blue outline: the second button next to bg_button_primary -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <stroke android:width="1.5dp" android:color="@color/detail_button_disabled" />
+            <corners android:radius="28dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <stroke android:width="1.5dp" android:color="@color/detail_button" />
+            <corners android:radius="28dp" />
+        </shape>
+    </item>
+</selector>
